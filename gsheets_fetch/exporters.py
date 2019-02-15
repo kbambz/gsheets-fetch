@@ -5,7 +5,7 @@ import json
 
 class GSheetsExporter(object):
 
-    default_filename_template = '{title} - {sheet}'
+    default_filename_template = '{title} - {sheet}.{ext}'
     default_ext = NotImplemented
 
     def __init__(self, dirpath=None, filename_template=None, encoding='utf-8'):
@@ -35,7 +35,7 @@ class GSheetsExporter(object):
             yield self._get_filename(title, sheet)
 
     def _get_filename(self, title, sheet):
-        filename = self.filename_template.format(title=title, sheet=sheet)
+        filename = self.filename_template.format(title=title, sheet=sheet, ext=self.default_ext)
         filename = os.path.join(self.dirpath, filename).replace('|', '_').replace('\'', '')
         if '.' not in filename:
             filename += '.' + self.default_ext
