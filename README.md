@@ -13,7 +13,7 @@ In requirements file (e.g., `pip install -r requirements.txt`):
 
 **You will need a credentials file to access private sheets!** You can download your credentials.json file by following the instructions at https://developers.google.com/sheets/api/quickstart/python.
 
-![How to get a credentials.json file](https://i.imgur.com/iIh4Kge.png)
+[![How to get credentials.json](https://i.imgur.com/iIh4Kge.png "How to get credentials.json")](https://developers.google.com/sheets/api/quickstart/python)
 
 ## Usage
 ```console
