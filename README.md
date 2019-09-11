@@ -1,6 +1,6 @@
 # gsheets-fetch
 
-## Install
+## Setup
 From command line:
 ```console
 $ pip install -e git+git@github.com:kbambz/gsheets-fetch.git#egg=gsheets_fetch --upgrade
@@ -10,6 +10,10 @@ In requirements file (e.g., `pip install -r requirements.txt`):
 ```
 -e git+git@github.com:kbambz/gsheets-fetch.git#egg=gsheets_fetch
 ```
+
+**You will need a credentials file to access private sheets!** You can download your credentials.json file by following the instructions at https://developers.google.com/sheets/api/quickstart/python.
+
+![How to get a credentials.json file](https://i.imgur.com/iIh4Kge.png)
 
 ## Usage
 ```console
