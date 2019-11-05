@@ -5,7 +5,7 @@ import json
 
 from gsheets_fetch.client import GSheets
 
-from gsheets_fetch.exporters import CsvGSheetsExporter, JsonGSheetsExporter, TxtGSheetsExporter
+from gsheets_fetch.exporters import CsvGSheetsExporter, JsonGSheetsExporter, TsvGSheetsExporter, TxtGSheetsExporter
 
 
 def cli():
@@ -36,6 +36,8 @@ def cli():
                                  help='Flag if files should be saved as plaintext instead of CSV.')
     file_type_group.add_argument('--json', dest='as_json', action='store_true', default=False,
                                  help='Flag if files should be saved as JSON instead of CSV.')
+    file_type_group.add_argument('--tsv', dest='as_tsv', action='store_true', default=False,
+                                 help='Flag if files should be saved as TSV instead of CSV.')
     parser.add_argument('--info', dest='show_info', action='store_true', default=False,
                         help='Show information about the spreadsheet and exit.')
 
@@ -46,6 +48,8 @@ def cli():
         kwargs['exporter_cls'] = JsonGSheetsExporter
     elif kwargs.pop('as_text', False):
         kwargs['exporter_cls'] = TxtGSheetsExporter
+    elif kwargs.pop('as_tsv', False):
+        kwargs['exporter_cls'] = TsvGSheetsExporter
     spreadsheet_id = kwargs.pop('spreadsheet_id')
 
     fetch(spreadsheet_id, **kwargs)

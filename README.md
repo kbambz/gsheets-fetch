@@ -59,7 +59,7 @@ optional arguments:
   
 ## Develop
 ```shell
-virtualenv venv
+virtualenv venv -p `which python3`
 . venv/bin/activate
 
 pip install -e . --upgrade

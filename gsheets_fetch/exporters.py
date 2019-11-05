@@ -6,6 +6,7 @@ import json
 class GSheetsExporter(object):
 
     default_filename_template = '{title} - {sheet}.{ext}'
+
     default_ext = NotImplemented
 
     def __init__(self, dirpath=None, filename_template=None, encoding='utf-8'):
@@ -41,33 +42,45 @@ class GSheetsExporter(object):
             filename += '.' + self.default_ext
         return filename
 
-    def _write(filename, rows, **kwargs):
+    def _write(self, filename, rows, **kwargs):
         raise NotImplemented
 
 
 class CsvGSheetsExporter(GSheetsExporter):
+
     default_ext = 'csv'
 
     def _write(self, filename, rows, **kwargs):
         with open(filename, 'w', newline='') as fd:
             csvfile = csv.writer(fd, dialect=kwargs.pop('dialect', 'excel'))
             for r in rows:
-                # print([c.encode(self.encoding) for c in r])
                 csvfile.writerow(r)
 
 
 class JsonGSheetsExporter(GSheetsExporter):
+
     default_ext = 'json'
 
     def _write(self, filename, rows, **kwargs):
-
         with open(filename, 'wb') as fd:
             # TODO: Test with Python 3
             data = dict(rows=[[c.encode(self.encoding) for c in r] for r in rows])
             json.dump(data, fd)
 
 
+class TsvGSheetsExporter(GSheetsExporter):
+
+    default_ext = 'tsv'
+
+    def _write(self, filename, rows, **kwargs):
+        with open(filename, 'w', newline='') as fd:
+            csvfile = csv.writer(fd, dialect=csv.excel_tab)
+            for r in rows:
+                csvfile.writerow(r)
+
+
 class TxtGSheetsExporter(GSheetsExporter):
+
     default_ext = 'txt'
 
     def _write(self, filename, rows, **kwargs):
