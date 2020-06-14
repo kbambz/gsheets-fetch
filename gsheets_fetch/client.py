@@ -74,7 +74,8 @@ class GSheets(object):
                        sheet_name_patterns=None,
                        exclude_sheet_names=None,
                        exclude_sheet_ids=None,
-                       exclude_sheet_name_patterns=None):
+                       exclude_sheet_name_patterns=None,
+                       **kwargs):
         f = Filter(include_names=sheet_names,
                    include_ids=sheet_ids,
                    include_name_patterns=sheet_name_patterns,
