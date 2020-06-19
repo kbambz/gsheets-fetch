@@ -56,7 +56,13 @@ optional arguments:
   --json                Flag if files should be saved as JSON instead of CSV.
   --info                Show information about the spreadsheet and exit.
   ```
-  
+
+### Destination Filename Template Usage
+
+`-f FILENAME_TEMPLATE, --filename_template FILENAME_TEMPLATE`
+
+If no destination filename is provided, the template defaults to `{title} - {sheet}.{ext}`, where `{title}` is the name of the spreadsheet and `{sheet}` is the name of the sheet, with any backslashes `\` removed and pipes (`|`) replaced with underscores (`_`). These keywords can also be used to create your own dynamic filename for one or more sheet downloads.
+
 ## Develop
 ```shell
 virtualenv venv -p `which python3`
