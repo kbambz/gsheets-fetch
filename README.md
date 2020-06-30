@@ -11,9 +11,11 @@ In requirements file (e.g., `pip install -r requirements.txt`):
 -e git+git@github.com:kbambz/gsheets-fetch.git#egg=gsheets_fetch
 ```
 
-**You will need a credentials file to access private sheets!** You can download your credentials.json file by following the instructions at https://developers.google.com/sheets/api/quickstart/python.
+**You will need a credentials file to access private sheets!** You can download a credentials.json file for simple read-only access by following the instructions at https://developers.google.com/sheets/api/quickstart/python.
 
 [![How to get credentials.json](https://i.imgur.com/iIh4Kge.png "How to get credentials.json")](https://developers.google.com/sheets/api/quickstart/python)
+
+For advanced usage (e.g., read and write), you'll need to enable [Google Sheets API](https://console.developers.google.com/apis/library/sheets.googleapis.com) and [Google Drive API](https://console.developers.google.com/apis/library/drive.googleapis.com) on your own project and create a new credentials.json file for an OAuth Credentials. If you already created a token.pickle file with read-only permissions, simply delete the storage file (e.g., `rm token.pickle`) and re-run the fetch command to reprompt the authorization flow. 
 
 ## Usage
 ```console
