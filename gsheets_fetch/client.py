@@ -18,7 +18,7 @@ from google.auth.transport.requests import Request
 class GSheets(object):
 
     def __init__(self, spreadsheet_id=None, **kwargs):
-        kwargs.setdefault('scopes', 'https://www.googleapis.com/auth/spreadsheets.readonly')
+        kwargs.setdefault('scopes', ['https://www.googleapis.com/auth/spreadsheets.readonly'])
         credentials = self._get_credentials(**kwargs)
         self._service = self._get_service(credentials)
         self.spreadsheet_id = spreadsheet_id
