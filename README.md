@@ -3,12 +3,12 @@
 ## Setup
 From command line:
 ```console
-$ pip install -e git+git@github.com:kbambz/gsheets-fetch.git#egg=gsheets_fetch --upgrade
+$ pip install -e git+https://github.com/kbambz/gsheets-fetch.git#egg=gsheets_fetch --upgrade
 ```
 
 In requirements file (e.g., `pip install -r requirements.txt`):
 ```
--e git+git@github.com:kbambz/gsheets-fetch.git#egg=gsheets_fetch
+-e git+https://github.com/kbambz/gsheets-fetch.git#egg=gsheets_fetch
 ```
 
 **You will need a credentials file to access private sheets!** You can download a credentials.json file for simple read-only access by following the instructions at https://developers.google.com/sheets/api/quickstart/python.
