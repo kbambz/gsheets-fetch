@@ -16,6 +16,7 @@ setup(
         'google-api-python-client==2.37.0',
         'google-auth-httplib2==0.1.0',
         'google-auth-oauthlib==0.4.6',
+        'requests==2.27.1',
     ],
     entry_points='''
         [console_scripts]
