@@ -59,17 +59,16 @@ def fetch(spreadsheet_id, client_secrets_filename=None, storage_filename=None,
           dirpath=None, filename_template=None, exporter_cls=None,
           show_info=False, quiet=False, **kwargs):
 
-    gs = GSheets(spreadsheet_id=spreadsheet_id,
+    with GSheets(spreadsheet_id=spreadsheet_id,
                  client_secrets=client_secrets_filename,
-                 storage=storage_filename)
-
-    if show_info:
-        metadata = gs.get_metadata(**kwargs)
-        json_metadata = json.dumps(metadata)
-        print(json_metadata)
-    else:
-        exporter_cls = exporter_cls or CsvGSheetsExporter
-        exporter = exporter_cls(dirpath=dirpath, filename_template=filename_template)
-        for filename in exporter.export(gs, **kwargs):
-            if not quiet:
-                print(filename)
+                 storage=storage_filename) as gs:
+        if show_info:
+            metadata = gs.get_metadata(**kwargs)
+            json_metadata = json.dumps(metadata)
+            print(json_metadata)
+        else:
+            exporter_cls = exporter_cls or CsvGSheetsExporter
+            exporter = exporter_cls(dirpath=dirpath, filename_template=filename_template)
+            for filename in exporter.export(gs, **kwargs):
+                if not quiet:
+                    print(filename)

@@ -46,7 +46,7 @@ class GSheets(object):
             fields='properties.title,sheets(properties.title,properties.sheetId)'
         ).execute()
 
-        metadata.setdefault('url', 'https://docs.google.com/spreadsheets/d/{}'.format(spreadsheet_id))
+        metadata.setdefault('url', f'https://docs.google.com/spreadsheets/d/{spreadsheet_id}')
         if 'sheets' in metadata:
             metadata['sheets'] = self._filter_sheets(metadata['sheets'], **kwargs)
 
@@ -111,6 +111,19 @@ class GSheets(object):
     @staticmethod
     def _get_service(credentials):
         return build_service('sheets', 'v4', credentials=credentials)
+
+    def __del__(self):
+        self.cleanup()
+
+    def cleanup(self):
+        # Temp workaround to https://github.com/googleapis/google-api-python-client/issues/618
+        self._service._http.http.close()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, type, value, traceback):
+        self.cleanup()
 
 
 class Filter(object):

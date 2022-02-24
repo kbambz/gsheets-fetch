@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 setup(
     name='gsheets_fetch',
     description='Download sheets from Google Sheets as CSV, plain text, or JSON files.',
-    version='0.0.3',
+    version='0.0.4',
     url='https://github.com/kbambz/gsheets-fetch',
     author='Kathryn Bambino',
     author_email='katie.bambino@gmail.com',
